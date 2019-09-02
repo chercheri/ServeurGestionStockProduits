@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Produit;
 import com.example.demo.service.ProduitMockService;
+import com.example.demo.service.ProduitService;
 
 @RestController
 @RequestMapping("/api/produit")
@@ -24,7 +25,10 @@ import com.example.demo.service.ProduitMockService;
 public class ProduitController {
 	
 	@Autowired
-	private ProduitMockService produitService;
+	private ProduitMockService produitSMockervice;
+
+	@Autowired
+	private ProduitService produitService;
 	
 	@GetMapping
 	public List<Produit> getProduits(){
@@ -41,8 +45,8 @@ public class ProduitController {
 		produitService.updateProduit(produit);
 	}
 	
-	@DeleteMapping("/{reference}")
-	public void deleteProduit(@PathVariable String reference) {
-		produitService.deleteProduit(reference);
+	@DeleteMapping("/{id}")
+	public void deleteProduit(@PathVariable Long id) {
+		produitService.deleteProduit(id);
 	}
 }
