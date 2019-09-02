@@ -39,12 +39,9 @@ public class ProduitMockService implements IProduitService {
 
 	@Override
 	public void deleteProduit(String reference) {
-		for (Produit produit : produits) {
-			if(produit.getReference().equals(reference)) {
-				produits.remove(produit);
-				break;
-			}
-		}
+		Produit produit = new Produit();
+		produit.setReference(reference);
+		produits.remove(produit);
 	}
 
 }
