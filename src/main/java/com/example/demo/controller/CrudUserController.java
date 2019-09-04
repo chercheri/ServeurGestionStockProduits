@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
-
 import java.util.List;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,37 +13,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Produit;
+import com.example.demo.entity.User;
 import com.example.demo.service.ProduitMockService;
 import com.example.demo.service.ProduitService;
+import com.example.demo.service.UserService;
 
 @RestController
-@RequestMapping("/api/produit")
-
-public class ProduitController {
+@RequestMapping(name = "/crud_user")
+public class CrudUserController {
 	
-	@Autowired
-	private ProduitMockService produitSMockervice;
 
 	@Autowired
-	private ProduitService produitService;
+	private UserService userService;
 	
 	@GetMapping
-	public List<Produit> getProduits(){
-		return produitService.getAll();
+	public List<User> getUsers(){
+		return userService.getAll();
 	}
 	
 	@PostMapping
-	public void addProduit(@RequestBody Produit produit) {
-		produitService.addOne(produit);
+	public void addUser(@RequestBody User user) {
+		userService.addOne(user);
 	}
 	
 	@PutMapping
-	public void updateProduit(@RequestBody Produit produit) {
-		produitService.updateOne(produit);
+	public void updateUser(@RequestBody User user) {
+		userService.updateOne(user);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteProduit(@PathVariable Long id) {
-		produitService.deleteOne(id);
+	public void deleteUser(@PathVariable Long id) {
+		userService.deleteOne(id);
 	}
 }

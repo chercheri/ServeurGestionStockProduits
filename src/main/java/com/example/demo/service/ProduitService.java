@@ -11,33 +11,36 @@ import com.example.demo.entity.Produit;
 
 @Service
 @Primary
-public class ProduitService implements IProduitService {
+public class ProduitService implements ICrudService<Produit, Long> {
 
 	@Autowired
 	private ProduitRepository produitRepository;
 	
 	@Override
-	public List<Produit> getProduits() {
+	public List<Produit> getAll() {
 		return this.produitRepository.findAll();
 	}
 
 	@Override
-	public void addProduit(Produit produit) {
+	public void addOne(Produit produit) {
 		this.produitRepository.save(produit);
 		
 	}
 
 	@Override
-	public void updateProduit(Produit produit) {
+	public void updateOne(Produit produit) {
 		this.produitRepository.save(produit);
 		
 	}
 
 	@Override
-	public void deleteProduit(Long id) {
+	public void deleteOne(Long id) {
 		Produit p = new Produit();
 		p.setId(id);
 		this.produitRepository.delete(p);
 	}
+
+	
+
 
 }
